@@ -1,0 +1,7 @@
+authentication-svc/
+product-svc/
+order-svc/
+payment-svc/
+reminder-svc/
+gateway-svc/
+frontend-svc/

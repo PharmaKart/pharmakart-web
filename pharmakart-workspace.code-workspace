@@ -1,0 +1,180 @@
+{
+  "folders": [
+    {
+      "path": "gateway-svc",
+      "name": "Gateway Service"
+    },
+    {
+      "path": "authentication-svc",
+      "name": "Authentication Service"
+    },
+    {
+      "path": "product-svc",
+      "name": "Product Service"
+    },
+    {
+      "path": "order-svc",
+      "name": "Order Service"
+    },
+    {
+      "path": "payment-svc",
+      "name": "Payment Service"
+    },
+    {
+      "path": "reminder-svc",
+      "name": "Reminder Service"
+    },
+    {
+      "path": "frontend-svc",
+      "name": "Frontend Service"
+    },
+    {
+      "path": ".",
+      "name": "Pharmakart Web"
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "gateway-svc": true,
+      "authentication-svc": true,
+      "product-svc": true,
+      "order-svc": true,
+      "payment-svc": true,
+      "reminder-svc": true,
+      "frontend-svc": true,
+      "**/node_modules": true,
+      "**/bin": true,
+      "**/vendor": true
+    },
+    "launch": {
+      "configurations": [
+        {
+          "name": "Debug Authentication Service",
+          "type": "go",
+          "request": "launch",
+          "mode": "debug",
+          "program": "${workspaceFolder:authentication-svc}/cmd/main.go",
+          "env": {
+            "PORT": "50051",
+            "JWT_SECRET": "your-secret-key",
+            "DB_HOST": "localhost",
+            "DB_USER": "postgres",
+            "DB_PASSWORD": "postgres",
+            "DB_NAME": "pharmakartdb"
+          },
+          "args": [],
+          "output": "${workspaceFolder:authentication-svc}/bin/debug/debug-auth",
+          "showLog": true
+        },
+        {
+          "name": "Debug Product Service",
+          "type": "go",
+          "request": "launch",
+          "mode": "debug",
+          "program": "${workspaceFolder:product-svc}/cmd/main.go",
+          "env": {
+            "PORT": "50052",
+            "DB_HOST": "localhost",
+            "DB_USER": "postgres",
+            "DB_PASSWORD": "postgres",
+            "DB_NAME": "pharmakartdb"
+          },
+          "args": [],
+          "output": "${workspaceFolder:product-svc}/bin/debug/debug-product",
+          "showLog": true
+        },
+        {
+          "name": "Debug Order Service",
+          "type": "go",
+          "request": "launch",
+          "mode": "debug",
+          "program": "${workspaceFolder:order-svc}/cmd/main.go",
+          "env": {
+            "PORT": "50053",
+            "PRODUCT_SERVICE_URL": "localhost:50052",
+            "REMINDER_SERVICE_URL": "localhost:50055",
+            "DB_HOST": "localhost",
+            "DB_USER": "postgres",
+            "DB_PASSWORD": "postgres",
+            "DB_NAME": "pharmakartdb"
+          },
+          "args": [],
+          "output": "${workspaceFolder:order-svc}/bin/debug/debug-order",
+          "showLog": true
+        },
+        {
+          "name": "Debug Payment Service",
+          "type": "go",
+          "request": "launch",
+          "mode": "debug",
+          "program": "${workspaceFolder:payment-svc}/cmd/main.go",
+          "env": {
+            "PORT": "50054",
+            "DB_HOST": "localhost",
+            "DB_USER": "postgres",
+            "DB_PASSWORD": "postgres",
+            "DB_NAME": "pharmakartdb"
+          },
+          "args": [],
+          "output": "${workspaceFolder:payment-svc}/bin/debug/debug-payment",
+          "showLog": true
+        },
+
+        {
+          "name": "Debug Reminder Service",
+          "type": "go",
+          "request": "launch",
+          "mode": "debug",
+          "program": "${workspaceFolder:reminder-svc}/cmd/main.go",
+          "env": {
+            "PORT": "50055",
+            "AWS_ACCESS_KEY_ID": "your-aws-access-key",
+            "AWS_SECRET_ACCESS_KEY": "your-aws-secret-key",
+            "AWS_REGION": "canada-central-1",
+            "SNS_TOPIC_ARN": "your-sns-topic-arn",
+            "SQS_QUEUE_URL": "your-sqs-queue-url",
+            "DB_HOST": "localhost",
+            "DB_USER": "postgres",
+            "DB_PASSWORD": "postgres",
+            "DB_NAME": "pharmakartdb"
+          },
+          "args": [],
+          "output": "${workspaceFolder:reminder-svc}/bin/debug/debug-reminder",
+          "showLog": true
+        },
+        {
+          "name": "Debug Gateway Service",
+          "type": "go",
+          "request": "launch",
+          "mode": "debug",
+          "program": "${workspaceFolder:gateway-svc}/cmd/main.go",
+          "env": {
+            "PORT": "8080",
+            "AUTH_SERVICE_URL": "localhost:50051",
+            "PRODUCT_SERVICE_URL": "localhost:50052",
+            "ORDER_SERVICE_URL": "localhost:50053",
+            "PAYMENT_SERVICE_URL": "localhost:50054",
+            "REMINDER_SERVICE_URL": "localhost:50055"
+          },
+          "args": [],
+          "output": "${workspaceFolder:gateway-svc}/bin/debug/debug-gateway",
+          "showLog": true
+        }
+      ],
+      "compounds": [
+        {
+          "name": "Debug All Services",
+          "configurations": [
+            "Debug Authentication Service",
+            "Debug Product Service",
+            "Debug Order Service",
+            "Debug Payment Service",
+            "Debug Reminder Service",
+            "Debug Gateway Service"
+          ]
+        }
+      ]
+    },
+    "makefile.configureOnOpen": false
+  }
+}

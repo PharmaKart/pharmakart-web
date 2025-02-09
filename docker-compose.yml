@@ -1,0 +1,126 @@
+services:
+  # Postgres database
+  db:
+    image: postgres:16
+    container_name: pharmakart_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: pharmakartdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pharmakart_db_data:/var/lib/postgresql/data
+
+  # Authentication service
+  authentication-svc:
+    build:
+      context: authentication-svc
+    ports:
+      - "50051:50051"
+    environment:
+      PORT: 50051
+      JWT_SECRET: secret-key
+      DB_HOST: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: pharmakartdb
+      DB_PORT: 5432
+    depends_on:
+      - db
+
+  # Product service
+  product-svc:
+    build:
+      context: product-svc
+    ports:
+      - "50052:50052"
+    environment:
+      PORT: 50052
+      DB_HOST: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: pharmakartdb
+      DB_PORT: 5432
+    depends_on:
+      - db
+
+  # Order service
+  order-svc:
+    build:
+      context: order-svc
+    ports:
+      - "50053:50053"
+    environment:
+      PORT: 50053
+      DB_HOST: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: pharmakartdb
+      DB_PORT: 5432
+      PRODUCT_SERVICE_URL: product-svc:50052
+      REMINDER_SERVICE_URL: reminder-svc:50055
+    depends_on:
+      - db
+      - product-svc
+      - reminder-svc
+
+  # Payment service
+  payment-svc:
+    build:
+      context: payment-svc
+    ports:
+      - "50054:50054"
+    environment:
+      PORT: 50054
+      DB_HOST: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: pharmakartdb
+      DB_PORT: 5432
+    depends_on:
+      - db
+
+  # Reminder service
+  reminder-svc:
+    build:
+      context: reminder-svc
+    ports:
+      - "50055:50055"
+    environment:
+      PORT: 50055
+      DB_HOST: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_NAME: pharmakartdb
+      DB_PORT: 5432
+      AWS_ACCESS_KEY_ID: your-aws-access-key
+      AWS_SECRET_ACCESS_KEY: your-aws-secret-key
+      AWS_REGION: ca-central-1
+      SNS_TOPIC_ARN: your-sns-topic-arn
+      SQS_QUEUE_URL: your-sqs-queue-url
+    depends_on:
+      - db
+
+  # Gateway service
+  gateway-svc:
+    build:
+      context: gateway-svc
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: 8080
+      AUTH_SERVICE_URL: authentication-svc:50051
+      PRODUCT_SERVICE_URL: product-svc:50052
+      ORDER_SERVICE_URL: order-svc:50053
+      PAYMENT_SERVICE_URL: payment-svc:50054
+      REMINDER_SERVICE_URL: reminder-svc:50055
+    depends_on:
+      - authentication-svc
+      - product-svc
+      - order-svc
+      - payment-svc
+      - reminder-svc
+
+volumes:
+  pharmakart_db_data:
