@@ -26,6 +26,7 @@ Pharmakart is a comprehensive online pharmacy platform designed to facilitate th
 - `make` installed (for running automated script).
 - `protoc` installed (for generating protobuf files).
 - `npm` installed (for frontend dependencies).
+- `stripe` CLI installed (optional, for local stripe tests)
 - Visual Studio Code (optional, for development).
 - Go installed.
 
@@ -116,6 +117,12 @@ Navigate to the `frontend-svc` directory and install the required dependencies:
 cd frontend-svc
 npm install
 cd ..
+```
+
+#### Start Stripe forwarder
+```bash
+stripe login
+stripe listen --forward-to localhost:8080/payment/webhook
 ```
 
 ### 4. Run the Application

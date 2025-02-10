@@ -53,7 +53,7 @@
           "type": "go",
           "request": "launch",
           "mode": "debug",
-          "program": "${workspaceFolder:authentication-svc}/cmd/main.go",
+          "program": "${workspaceFolder:Authentication Service}/cmd/main.go",
           "env": {
             "PORT": "50051",
             "JWT_SECRET": "your-secret-key",
@@ -63,7 +63,7 @@
             "DB_NAME": "pharmakartdb"
           },
           "args": [],
-          "output": "${workspaceFolder:authentication-svc}/bin/debug/debug-auth",
+          "output": "${workspaceFolder:Authentication Service}/bin/debug/debug-auth",
           "showLog": true
         },
         {
@@ -71,7 +71,7 @@
           "type": "go",
           "request": "launch",
           "mode": "debug",
-          "program": "${workspaceFolder:product-svc}/cmd/main.go",
+          "program": "${workspaceFolder:Product Service}/cmd/main.go",
           "env": {
             "PORT": "50052",
             "DB_HOST": "localhost",
@@ -80,7 +80,7 @@
             "DB_NAME": "pharmakartdb"
           },
           "args": [],
-          "output": "${workspaceFolder:product-svc}/bin/debug/debug-product",
+          "output": "${workspaceFolder:Product Service}/bin/debug/debug-product",
           "showLog": true
         },
         {
@@ -88,7 +88,7 @@
           "type": "go",
           "request": "launch",
           "mode": "debug",
-          "program": "${workspaceFolder:order-svc}/cmd/main.go",
+          "program": "${workspaceFolder:Order Service}/cmd/main.go",
           "env": {
             "PORT": "50053",
             "PRODUCT_SERVICE_URL": "localhost:50052",
@@ -99,7 +99,7 @@
             "DB_NAME": "pharmakartdb"
           },
           "args": [],
-          "output": "${workspaceFolder:order-svc}/bin/debug/debug-order",
+          "output": "${workspaceFolder:Order Service}/bin/debug/debug-order",
           "showLog": true
         },
         {
@@ -107,7 +107,7 @@
           "type": "go",
           "request": "launch",
           "mode": "debug",
-          "program": "${workspaceFolder:payment-svc}/cmd/main.go",
+          "program": "${workspaceFolder:Payment Service}/cmd/main.go",
           "env": {
             "PORT": "50054",
             "DB_HOST": "localhost",
@@ -118,7 +118,7 @@
             "GATEWAY_URL": "http://localhost:8080"
           },
           "args": [],
-          "output": "${workspaceFolder:payment-svc}/bin/debug/debug-payment",
+          "output": "${workspaceFolder:Payment Service}/bin/debug/debug-payment",
           "showLog": true
         },
 
@@ -127,7 +127,7 @@
           "type": "go",
           "request": "launch",
           "mode": "debug",
-          "program": "${workspaceFolder:reminder-svc}/cmd/main.go",
+          "program": "${workspaceFolder:Reminder Service}/cmd/main.go",
           "env": {
             "PORT": "50055",
             "AWS_ACCESS_KEY_ID": "your-aws-access-key",
@@ -141,7 +141,7 @@
             "DB_NAME": "pharmakartdb"
           },
           "args": [],
-          "output": "${workspaceFolder:reminder-svc}/bin/debug/debug-reminder",
+          "output": "${workspaceFolder:Reminder Service}/bin/debug/debug-reminder",
           "showLog": true
         },
         {
@@ -149,7 +149,7 @@
           "type": "go",
           "request": "launch",
           "mode": "debug",
-          "program": "${workspaceFolder:gateway-svc}/cmd/main.go",
+          "program": "${workspaceFolder:Gateway Service}/cmd/main.go",
           "env": {
             "PORT": "8080",
             "AUTH_SERVICE_URL": "localhost:50051",
@@ -160,8 +160,21 @@
             "STRIPE_WEBHOOK_SECRET": "whsec_your_stripe_webhook_secret"
           },
           "args": [],
-          "output": "${workspaceFolder:gateway-svc}/bin/debug/debug-gateway",
+          "output": "${workspaceFolder:Gateway Service}/bin/debug/debug-gateway",
           "showLog": true
+        },
+        {
+          "name": "Debug Frontend Service",
+          "type": "node",
+          "request": "launch",
+          "runtimeExecutable": "node",
+          "runtimeArgs": [
+            "./node_modules/.bin/next",
+            "dev"
+          ],
+          "cwd": "${workspaceFolder:Frontend Service}",
+          "console": "integratedTerminal",
+          "outputCapture": "std"
         }
       ],
       "compounds": [
@@ -173,7 +186,8 @@
             "Debug Order Service",
             "Debug Payment Service",
             "Debug Reminder Service",
-            "Debug Gateway Service"
+            "Debug Gateway Service",
+            "Debug Frontend Service"
           ]
         }
       ]
