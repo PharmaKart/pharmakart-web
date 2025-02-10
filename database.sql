@@ -50,6 +50,7 @@ CREATE TABLE order_items (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     order_id UUID REFERENCES orders(id) ON DELETE CASCADE,
     product_id UUID REFERENCES products(id),
+    product_name VARCHAR(255) NOT NULL,
     quantity INT NOT NULL CHECK (quantity > 0),
     price DECIMAL(10,2) NOT NULL, -- Stores price at purchase time
     created_at TIMESTAMP DEFAULT NOW()
