@@ -9,6 +9,12 @@ CREATE TABLE users (
     created_at TIMESTAMP DEFAULT NOW()
 );
 
+INSERT INTO users (
+username, email, password_hash, role
+) VALUES (
+'admin', 'asrma.sharma@gmail.com', '$2a$10$FSKMHMOh7D7opdXqcpkq2.ivo/OaSMrCvf.vtTf69AvrhZvetCIpe', 'admin'
+);
+
 CREATE TABLE customers (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     user_id UUID UNIQUE REFERENCES users(id) ON DELETE CASCADE,
