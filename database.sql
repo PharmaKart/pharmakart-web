@@ -45,8 +45,8 @@ CREATE TABLE products (
 
 CREATE TABLE orders (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    customer_id UUID REFERENCES customers(id) ON DELETE CASCADE,
-    status VARCHAR(50) CHECK (status IN ('pending', 'approved', 'paid', 'shipped', 'completed', 'cancelled')) NOT NULL DEFAULT 'pending',
+    customer_id UUID REFERENCES users(id) ON DELETE CASCADE,
+    status VARCHAR(50) CHECK (status IN ('payment_pending', 'payment_failed', 'approved', 'paid', 'shipped', 'completed', 'cancelled')) NOT NULL DEFAULT 'pending',
     prescription_url TEXT,  -- If required, stored in S3
     created_at TIMESTAMP DEFAULT NOW(),
     updated_at TIMESTAMP DEFAULT NOW()
