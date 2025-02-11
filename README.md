@@ -41,40 +41,20 @@ cd pharmakart-web
 
 ### 2. Clone the Individual Services
 Pharmakart is built using multiple services. Clone each service repository into the `pharmakart-web` folder:
-
-#### Gateway Service
 ```bash
 git clone https://github.com/PharmaKart/gateway-svc.git
-```
-
-#### Authentication Service
-```bash
 git clone https://github.com/PharmaKart/authentication-svc.git
-```
-
-#### Product Service
-```bash
 git clone https://github.com/PharmaKart/product-svc.git
-```
-
-#### Order Service
-```bash
 git clone https://github.com/PharmaKart/order-svc.git
-```
-
-#### Payment Service
-```bash
 git clone https://github.com/PharmaKart/payment-svc.git
-```
-
-#### Reminder Service
-```bash
 git clone https://github.com/PharmaKart/reminder-svc.git
+git clone https://github.com/PharmaKart/frontend-svc.git
 ```
 
-#### Frontend Service
+#### Install protoc-gen-go packages for golang
 ```bash
-git clone https://github.com/PharmaKart/frontend-svc.git
+go install google.golang.org/protobuf/cmd/protoc-gen-go
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc
 ```
 
 #### Generate Protobuf Files
