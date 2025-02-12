@@ -172,14 +172,13 @@
         {
           "name": "Debug Frontend Service",
           "type": "node",
-          "request": "launch",
-          "runtimeExecutable": "node",
-          "runtimeArgs": [
-            "./node_modules/.bin/next",
-            "dev"
-          ],
+            "request": "launch",
+            "runtimeExecutable": "npm",
+            "runtimeArgs": [
+              "run",
+              "dev"
+            ],
           "cwd": "${workspaceFolder:Frontend Service}",
-          "console": "integratedTerminal",
           "outputCapture": "std"
         }
       ],
