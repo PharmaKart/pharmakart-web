@@ -21,7 +21,7 @@ services:
     environment:
       PORT: 50051
       JWT_SECRET: secret-key
-      DB_HOST: postgres
+      DB_HOST: pharmakart_db
       DB_USER: postgres
       DB_PASSWORD: postgres
       DB_NAME: pharmakartdb
@@ -37,7 +37,7 @@ services:
       - "50052:50052"
     environment:
       PORT: 50052
-      DB_HOST: postgres
+      DB_HOST: pharmakart_db
       DB_USER: postgres
       DB_PASSWORD: postgres
       DB_NAME: pharmakartdb
@@ -53,7 +53,7 @@ services:
       - "50053:50053"
     environment:
       PORT: 50053
-      DB_HOST: postgres
+      DB_HOST: pharmakart_db
       DB_USER: postgres
       DB_PASSWORD: postgres
       DB_NAME: pharmakartdb
@@ -73,7 +73,7 @@ services:
       - "50054:50054"
     environment:
       PORT: 50054
-      DB_HOST: postgres
+      DB_HOST: pharmakart_db
       DB_USER: postgres
       DB_PASSWORD: postgres
       DB_NAME: pharmakartdb
@@ -91,7 +91,7 @@ services:
       - "50055:50055"
     environment:
       PORT: 50055
-      DB_HOST: postgres
+      DB_HOST: pharmakart_db
       DB_USER: postgres
       DB_PASSWORD: postgres
       DB_NAME: pharmakartdb
