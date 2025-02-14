@@ -119,7 +119,7 @@
             "DB_PASSWORD": "postgres",
             "DB_NAME": "pharmakartdb",
             "STRIPE_SECRET_KEY": "your-stripe-secret-key",
-            "GATEWAY_URL": "http://localhost:8080"
+            "FRONTEND_URL": "http://localhost:3000"
           },
           "args": [],
           "output": "${workspaceFolder:Payment Service}/bin/debug/debug-payment",

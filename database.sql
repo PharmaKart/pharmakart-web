@@ -65,10 +65,10 @@ CREATE TABLE order_items (
 CREATE TABLE payments (
     id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
     order_id UUID UNIQUE REFERENCES orders(id) ON DELETE CASCADE,
-    customer_id UUID REFERENCES customers(id),
+    customer_id UUID REFERENCES users(id),
     transaction_id VARCHAR(255) UNIQUE NOT NULL, -- From Stripe
     amount DECIMAL(10,2) NOT NULL,
-    status VARCHAR(50) CHECK (status IN ('pending', 'successful', 'failed')) NOT NULL DEFAULT 'pending',
+    status VARCHAR(50) CHECK (status IN ('pending', 'complete', 'failed')) NOT NULL DEFAULT 'pending',
     created_at TIMESTAMP DEFAULT NOW()
 );
 

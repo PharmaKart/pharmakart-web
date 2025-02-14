@@ -119,7 +119,7 @@ cd ..
 #### Start Stripe forwarder
 ```bash
 stripe login
-stripe listen --forward-to localhost:8080/payment/webhook
+stripe listen --forward-to localhost:8080/api/v1/payment/webhook
 ```
 
 ### 4. Run the Application
