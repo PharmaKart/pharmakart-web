@@ -49,28 +49,41 @@ git clone https://github.com/PharmaKart/order-svc.git
 git clone https://github.com/PharmaKart/payment-svc.git
 git clone https://github.com/PharmaKart/reminder-svc.git
 git clone https://github.com/PharmaKart/frontend-svc.git
+git clone https://github.com/PharmaKart/cloud-config.git
 ```
 
 #### Install protoc-gen-go packages for golang
 ```bash
-go install google.golang.org/protobuf/cmd/protoc-gen-go
-go install google.golang.org/grpc/cmd/protoc-gen-go-grpc
+go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 ```
 
 #### Generate Protobuf Files
 Run the following commands to generate protobuf files for the authentication, product, order, and payment services:
 
 ## (Windows)
-If prompted for file or directory, just choose file by pressing "F".
-```bash
+**If prompted for file or directory, choose file by pressing "F".**
+```cmd
 cd authentication-svc
 make win-proto
+```
+
+```cmd
 cd ../product-svc
 make win-proto
+```
+
+```cmd
 cd ../order-svc
 make win-proto
+```
+
+```cmd
 cd ../payment-svc
 make win-proto
+```
+
+```cmd
 cd ../reminder-svc
 make win-proto
 ```

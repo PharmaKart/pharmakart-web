@@ -29,6 +29,10 @@
       "name": "Frontend Service"
     },
     {
+      "path": "cloud-config",
+      "name": "Cloud Config"
+    },
+    {
       "path": ".",
       "name": "Pharmakart Web"
     }
@@ -42,6 +46,7 @@
       "payment-svc": true,
       "reminder-svc": true,
       "frontend-svc": true,
+      "cloud-config": true,
       "**/node_modules": true,
       "**/bin": true,
       "**/vendor": true
