@@ -86,6 +86,7 @@ make win-proto
 ```cmd
 cd ../reminder-svc
 make win-proto
+cd ..
 ```
 
 ## (Others)
@@ -100,6 +101,7 @@ cd ../payment-svc
 make proto
 cd ../reminder-svc
 make proto
+cd ..
 ```
 
 ### 3. Set Up the Services
