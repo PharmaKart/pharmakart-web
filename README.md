@@ -59,37 +59,7 @@ go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
 ```
 
 #### Generate Protobuf Files
-Run the following commands to generate protobuf files for the authentication, product, order, and payment services:
-
-## (Windows)
-**If prompted for file or directory, choose file by pressing "F".**
-```cmd
-cd authentication-svc
-make win-proto
-```
-
-```cmd
-cd ../product-svc
-make win-proto
-```
-
-```cmd
-cd ../order-svc
-make win-proto
-```
-
-```cmd
-cd ../payment-svc
-make win-proto
-```
-
-```cmd
-cd ../reminder-svc
-make win-proto
-cd ..
-```
-
-## (Others)
+Run the following commands to generate protobuf files for the authentication, product, order, payment, and reminder services:
 ```bash
 cd authentication-svc
 make proto
@@ -100,6 +70,8 @@ make proto
 cd ../payment-svc
 make proto
 cd ../reminder-svc
+make proto
+cd ../gateway-svc
 make proto
 cd ..
 ```
