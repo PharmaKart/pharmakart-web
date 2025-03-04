@@ -49,7 +49,8 @@
       "cloud-config": true,
       "**/node_modules": true,
       "**/bin": true,
-      "**/vendor": true
+      "**/vendor": true,
+      "**/.terraform": true,
     },
     "launch": {
       "configurations": [
@@ -130,7 +131,6 @@
           "output": "${workspaceFolder:Payment Service}/bin/debug/debug-payment",
           "showLog": true
         },
-
         {
           "name": "Debug Reminder Service",
           "type": "go",
@@ -177,12 +177,12 @@
         {
           "name": "Debug Frontend Service",
           "type": "node",
-            "request": "launch",
-            "runtimeExecutable": "npm",
-            "runtimeArgs": [
-              "run",
-              "dev"
-            ],
+          "request": "launch",
+          "runtimeExecutable": "npm",
+          "runtimeArgs": [
+            "run",
+            "dev"
+          ],
           "cwd": "${workspaceFolder:Frontend Service}",
           "outputCapture": "std"
         }
