@@ -50,7 +50,7 @@
       "**/node_modules": true,
       "**/bin": true,
       "**/vendor": true,
-      "**/.terraform": true,
+      "**/.terraform": true
     },
     "launch": {
       "configurations": [
@@ -168,7 +168,10 @@
             "ORDER_SERVICE_URL": "localhost:50053",
             "PAYMENT_SERVICE_URL": "localhost:50054",
             "REMINDER_SERVICE_URL": "localhost:50055",
-            "STRIPE_WEBHOOK_SECRET": "whsec_your_stripe_webhook_secret"
+            "STRIPE_WEBHOOK_SECRET": "whsec_your_stripe_webhook_secret",
+            "S3_BUCKET_NAME": "your-s3-bucket-name",
+            "AWS_REGION": "canada-central-1",
+            "FRONTEND_URL": "http://localhost:3000"
           },
           "args": [],
           "output": "${workspaceFolder:Gateway Service}/bin/debug/debug-gateway",
@@ -179,10 +182,7 @@
           "type": "node",
           "request": "launch",
           "runtimeExecutable": "npm",
-          "runtimeArgs": [
-            "run",
-            "dev"
-          ],
+          "runtimeArgs": ["run", "dev"],
           "cwd": "${workspaceFolder:Frontend Service}",
           "outputCapture": "std"
         }
