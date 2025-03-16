@@ -103,7 +103,7 @@
           "env": {
             "PORT": "50053",
             "PRODUCT_SERVICE_URL": "localhost:50052",
-            "ORDER_SERVICE_URL": "localhost:50054",
+            "PAYMENT_SERVICE_URL": "localhost:50054",
             "DB_HOST": "localhost",
             "DB_USER": "postgres",
             "DB_PASSWORD": "postgres",
@@ -126,6 +126,7 @@
             "DB_USER": "postgres",
             "DB_PASSWORD": "postgres",
             "DB_NAME": "pharmakartdb",
+            "ORDER_SERVICE_URL": "localhost:50053",
             "STRIPE_SECRET_KEY": "your-stripe-secret-key",
             "FRONTEND_URL": "http://localhost:3000"
           },
