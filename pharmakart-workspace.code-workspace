@@ -201,7 +201,8 @@
             "Debug Reminder Service",
             "Debug Gateway Service",
             "Debug Frontend Service"
-          ]
+          ],
+          "stopAll": true
         }
       ]
     },
